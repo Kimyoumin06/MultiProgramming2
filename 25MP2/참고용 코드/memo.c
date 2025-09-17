@@ -1,38 +1,45 @@
-#include <stdio.h>
+#include <iostream>
 #include <math.h>
+#include <stdio.h>
 #include <Windows.h>
 
 #define PI 3.14159226535897
 
-void moveCursor(int x, int y)
+int drawPoint(int x, int y)
 {
-    printf("\x1b[%d;%dH", y, x);
-}
-
-//매개변수 isExploded
-//0: 폭발전 폭탄
-//1: 폭발함
-void printBomb(int isExploded)
-{
-    //폭탄은 항상 7칸
-    if (isExploded)
-    {
-        printf("\x1b[A^^^^^^^");
-        printf("\x1b[B\x1b[7D!!BAM!!");
-        printf("\x1b[B\x1b[7D^^^^^^^");
-    }
-    else
-        printf("(  b  )");
+    printf("\x1B[%d;%dH*", y, x);
 }
 
 int main()
 {
-    // 여기부터 코드를 작성하세요----------------------   
+    int posx, posy;
+    posx = 3, posy = 3;
+
+    double angle = 0;
+    int length = 0;
 
 
+    while (angle < 360)
+    {
+        int y, x;
 
+        x = cos(angle * PI / 180.0);
+        if (x)
+            length = -5;
+        else
+            length = 0;
+        y = sin(angle * PI / 180.0);
 
-    // 여기까지 코드를 작성하세요----------------------   
-    moveCursor(10, 20);
+        while (length < 5)
+        {
+            posx += x;
+            posy += y;
+            drawPoint(posx, posy);
+            length++;
+        }
+        angle += 90;
+    }
+
+    printf("\x1B[10;0H");
     return 0;
 }
