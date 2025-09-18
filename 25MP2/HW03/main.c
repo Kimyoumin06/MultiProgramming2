@@ -33,28 +33,40 @@ int main()
     int posX = 14, posY = 9;
     double angle = 90.0;
 
-    int length = 0;
-    int count = 2;
+    int times = 12;
+    int length = 2;
 
     int x, y;
 
-    moveCursor(posX, posY);
-
-    while (length <= 12)
+    for (int count = 0; count < times; count++)
     {
+
+        angle -= 90.0;
+
         x = cos(angle * PI / 180.0);
         y = sin(angle * PI / 180.0);
 
-        posX += x;
-        posY += y;
 
-        moveCursor(posX, posY);
-
-        length++;
-        if (length % count == 0)
+        if (count % 2 == 0)
         {
-            angle += 90.0;
-            printf("*");
+            posX += x;
+            moveCursor(posX, posY);
+        }
+        else
+        {
+            posY += y;
+            moveCursor(posX, posY);
+        }
+
+        for (int i = 0; i < length; i++)
+        {
+            printf("นÝบน %d\n", i + 1);
+        }
+
+        
+        if (length < 12)
+        {
+            length++;
         }
     }
 
