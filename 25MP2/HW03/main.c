@@ -56,10 +56,11 @@ int main()
         }
     }
 
-    times = 12;
     dir = 0;
     repeat = 0;
     length = 2;
+    times = 12;
+
     posX = 14, posY = 9;
 
     while (times--)
