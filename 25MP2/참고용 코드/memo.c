@@ -1,92 +1,167 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
+
+#include <math.h>
+
 #include <Windows.h>
 
+
+
+#define PI 3.14159226535897
+
+
+
 void moveCursor(int x, int y)
+
 {
-    printf("\x1b[%d;%dH", y, x);
+
+	printf("\x1b[%d;%dH", y, x);
+
 }
+
+
+
+//ë§¤ê°œë³€ìˆ˜ isExploded
+
+//0: í­ë°œì „ í­íƒ„
+
+//1: í­ë°œí•¨
 
 void printBomb(int isExploded)
+
 {
-    if (isExploded)
-    {
-        printf("\x1b[A^^^^^^^");
-        printf("\x1b[B\x1b[7D!!BAM!!");
-        printf("\x1b[B\x1b[7D^^^^^^^");
-    }
-    else
-        printf("(  B  )");
+
+	//í­íƒ„ì€ í•­ìƒ 7ì¹¸
+
+	if (isExploded)
+
+	{
+
+		printf("\x1b[A^^^^^^^");
+
+		printf("\x1b[B\x1b[7D!!BAM!!");
+
+		printf("\x1b[B\x1b[7D^^^^^^^");
+
+	}
+
+	else
+
+		printf("(Â  bÂ  )");
+
 }
 
+
+
 int main()
+
 {
-    // ÆøÅº Ãâ·Â
-    moveCursor(0, 0);
-    printBomb(0);
 
-    // ºÒ²É ½ÃÀÛ À§Ä¡
-    int posX = 14, posY = 9;
-    moveCursor(posX, posY);
-    printf("*");
+	// ì—¬ê¸°ë¶€í„° ì½”ë“œë¥¼ ì‘ì„±í•˜ì„¸ìš”----------------------Â  Â 
 
-    // ½ÉÁö ÀüÃ¼ ±×¸®±â
-    int cx = posX, cy = posY;
-    int length = 2;
-    int dir = 0;       // 0:ÇÏ, 1:¿ì, 2:»ó, 3:ÁÂ (¹İ½Ã°è)
-    int times = 12;
+	printBomb(0);
 
-    for (int count = 0; count < times; count++)
-    {
-        for (int i = 2; i < length; i++)
-        {
-            if (dir == 0) cy++;       // ¡é
-            else if (dir == 1) cx++;  // ¡æ
-            else if (dir == 2) cy--;  // ¡è
-            else if (dir == 3) cx--;  // ¡ç
+	// 8,0ì´ í­íƒ„ ë°”ë¡œ ì˜†
 
-            moveCursor(cx, cy);
-            printf("#");
-        }
+	int posX = 14, posY = 9;
 
-        dir++;
-        if (dir == 4) dir = 0;
+	int angle = 180;
 
-        if (count % 2 == 1) length = length + 3;
-    }
 
-    // ºÒ²É ÀÌµ¿
-    cx = posX; cy = posY;
-    length = 2;
-    dir = 0;
 
-    for (int count = 0; count < times; count++)
-    {
-        for (int i = 2; i < length; i++)
-        {
-            // ÇöÀç À§Ä¡ Áö¿ò
-            moveCursor(cx, cy);
-            printf(" ");
+	int times = 12;
 
-            if (dir == 0) cy++;       // ¡é
-            else if (dir == 1) cx++;  // ¡æ
-            else if (dir == 2) cy--;  // ¡è
-            else if (dir == 3) cx--;  // ¡ç
+	int length = 2;
 
-            moveCursor(cx, cy);
-            Sleep(200);
-            printf("*");
-        }
+	int printtimes = 2;
 
-        dir++;
-        if (dir == 4) dir = 0;
 
-        if (count % 2 == 1) length = length + 3;
-    }
 
-    // Æø¹ß
-    moveCursor(0, 0);
-    printBomb(1);
+	int x, y;
 
-    moveCursor(0, 20);
-    return 0;
+
+
+	moveCursor(posX, posY);
+
+
+
+	while (times)
+
+	{
+
+
+
+		//90 -> 0 -> 270 -> 180
+
+		if (angle == 180)
+
+		{
+
+			angle = 90;
+
+		}
+
+		else if (angle == 90)
+
+		{
+
+			angle = 0;
+
+		}
+
+		else if (angle == 0)
+
+		{
+
+			angle = 270;
+
+		}
+
+		else if (angle == 270)
+
+		{
+
+			angle = 180;
+
+
+
+
+
+			x = cos(angle * PI / 180.0);
+
+			y = sin(angle * PI / 180.0);
+
+
+
+			while (printtimes)
+
+			{
+
+				posX += x;
+
+				posY += y;
+
+				moveCursor(posX, posY);
+
+				printf("#");
+
+				printtimes--;
+
+			}
+
+			length = length + 2;
+
+			printtimes = length;
+
+			times--;
+
+		}
+
+	}
+
+	// ì—¬ê¸°ê¹Œì§€ ì½”ë“œë¥¼ ì‘ì„±í•˜ì„¸ìš”----------------------Â  Â 
+
+	moveCursor(10, 20);
+
+	return 0;
+
 }

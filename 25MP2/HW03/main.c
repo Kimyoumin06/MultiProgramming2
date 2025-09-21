@@ -1,20 +1,13 @@
-#include <stdio.h>
-#include <math.h>
+ï»¿#include <stdio.h>
 #include <Windows.h>
-
-#define PI 3.14159226535897
 
 void moveCursor(int x, int y)
 {
     printf("\x1b[%d;%dH", y, x);
 }
 
-//¸Å°³º¯¼ö isExploded
-//0: Æø¹ßÀü ÆøÅº
-//1: Æø¹ßÇÔ
 void printBomb(int isExploded)
 {
-    //ÆøÅºÀº Ç×»ó 7Ä­
     if (isExploded)
     {
         printf("\x1b[A^^^^^^^");
@@ -22,57 +15,81 @@ void printBomb(int isExploded)
         printf("\x1b[B\x1b[7D^^^^^^^");
     }
     else
-        printf("(  b  )");
+        printf("(  B  )");
 }
 
 int main()
 {
-    // ¿©±âºÎÅÍ ÄÚµå¸¦ ÀÛ¼ºÇÏ¼¼¿ä----------------------   
+
+    // ì—¬ê¸°ë¶€í„° ì½”ë“œë¥¼ ìž‘ì„±í•˜ì„¸ìš”----------------------Â  
+
+    moveCursor(0, 3);
     printBomb(0);
-    // 8,0ÀÌ ÆøÅº ¹Ù·Î ¿·
+
     int posX = 14, posY = 9;
-    double angle = 90.0;
 
-    int times = 12;
+    int dx[4] = { 0, 1, 0, -1 };
+    int dy[4] = { 1, 0, -1, 0 };
+
+    int dir = 0;
     int length = 2;
+    int repeat = 0;
+    int times = 12;
 
-    int x, y;
-
-    for (int count = 0; count < times; count++)
+    while (times--)
     {
-
-        angle -= 90.0;
-
-        x = cos(angle * PI / 180.0);
-        y = sin(angle * PI / 180.0);
-
-
-        if (count % 2 == 0)
-        {
-            posX += x;
-            moveCursor(posX, posY);
-        }
-        else
-        {
-            posY += y;
-            moveCursor(posX, posY);
-        }
-
         for (int i = 0; i < length; i++)
         {
-            printf("¹Ýº¹ %d\n", i + 1);
+            posX += dx[dir];
+            posY += dy[dir];
+            moveCursor(posX, posY);
+            printf("#");
         }
 
-        
-        if (length < 12)
+        dir = (dir + 1) % 4;
+        repeat++;
+
+        if (repeat == 2)
         {
-            length++;
+            length += 2;
+            repeat = 0;
         }
     }
 
+    times = 12;
+    dir = 0;
+    repeat = 0;
+    length = 2;
+    posX = 14, posY = 9;
 
+    while (times--)
+    {
+        for (int i = 0; i < length; i++)
+        {
+            posX += dx[dir];
+            posY += dy[dir];
+            moveCursor(posX, posY);
+            printf("*");
+            Sleep(200);
+            moveCursor(posX, posY);
+            printf(" ");
+        }
 
-    // ¿©±â±îÁö ÄÚµå¸¦ ÀÛ¼ºÇÏ¼¼¿ä----------------------   
+        dir = (dir + 1) % 4;
+        repeat++;
+
+        if (repeat == 2)
+        {
+            length += 2;
+            repeat = 0;
+        }
+    }
+
+    system("cls");
+    moveCursor(0, 3);
+    printBomb(1);
+
+    // ì—¬ê¸°ê¹Œì§€ ì½”ë“œë¥¼ ìž‘ì„±í•˜ì„¸ìš”----------------------Â  
     moveCursor(10, 20);
     return 0;
 }
