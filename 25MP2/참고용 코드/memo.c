@@ -1,167 +1,77 @@
 ﻿#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-#include <math.h>
+#define Key_a 97
+#define Key_z 122
+#define NUM (Key_z - Key_a + 1)
 
-#include <Windows.h>
-
-
-
-#define PI 3.14159226535897
-
-
-
-void moveCursor(int x, int y)
-
+// 문자 교환 함수
+void swap(char* a, char* b)
 {
-
-	printf("\x1b[%d;%dH", y, x);
-
+    char c = *a;
+    *a = *b;
+    *b = c;
 }
 
-
-
-//매개변수 isExploded
-
-//0: 폭발전 폭탄
-
-//1: 폭발함
-
-void printBomb(int isExploded)
-
+// 간단한 버블 정렬 (알파벳 오름차순)
+void bubble_sort(char arr[], int n)
 {
-
-	//폭탄은 항상 7칸
-
-	if (isExploded)
-
-	{
-
-		printf("\x1b[A^^^^^^^");
-
-		printf("\x1b[B\x1b[7D!!BAM!!");
-
-		printf("\x1b[B\x1b[7D^^^^^^^");
-
-	}
-
-	else
-
-		printf("(  b  )");
-
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - 1 - i; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
 }
-
-
 
 int main()
-
 {
+    char random[NUM];
+    char sorted[NUM];
+    int i;
 
-	// 여기부터 코드를 작성하세요----------------------   
+    srand(time(NULL));  // 랜덤 시드 초기화
 
-	printBomb(0);
+    // 1) 배열 초기화 (0으로)
+    for (i = 0; i < NUM; i++)
+    {
+        random[i] = 0;
+    }
 
-	// 8,0이 폭탄 바로 옆
+    // 2) 무작위로 알파벳 a~z 채우기
+    for (i = 0; i < NUM; i++)
+    {
+        while (1)
+        {
+            int rand_index = rand() % NUM;
+            if (random[rand_index] == 0)
+            {
+                random[rand_index] = (char)(i + Key_a);
+                break;
+            }
+        }
+    }
 
-	int posX = 14, posY = 9;
+    // 3) 복사본 만들기 (정렬용)
+    for (i = 0; i < NUM; i++)
+    {
+        sorted[i] = random[i];
+    }
 
-	int angle = 180;
+    // 4) 정렬 (알파벳 오름차순)
+    bubble_sort(sorted, NUM);
 
+    // 5) 출력: 인덱스, 랜덤 배열, 정렬된 배열 (더블 소팅 결과 비교)
+    printf("Index\tRandom\tSorted\n");
+    for (i = 0; i < NUM; i++)
+    {
+        printf("%2d\t  %c\t   %c\n", i, random[i], sorted[i]);
+    }
 
-
-	int times = 12;
-
-	int length = 2;
-
-	int printtimes = 2;
-
-
-
-	int x, y;
-
-
-
-	moveCursor(posX, posY);
-
-
-
-	while (times)
-
-	{
-
-
-
-		//90 -> 0 -> 270 -> 180
-
-		if (angle == 180)
-
-		{
-
-			angle = 90;
-
-		}
-
-		else if (angle == 90)
-
-		{
-
-			angle = 0;
-
-		}
-
-		else if (angle == 0)
-
-		{
-
-			angle = 270;
-
-		}
-
-		else if (angle == 270)
-
-		{
-
-			angle = 180;
-
-
-
-
-
-			x = cos(angle * PI / 180.0);
-
-			y = sin(angle * PI / 180.0);
-
-
-
-			while (printtimes)
-
-			{
-
-				posX += x;
-
-				posY += y;
-
-				moveCursor(posX, posY);
-
-				printf("#");
-
-				printtimes--;
-
-			}
-
-			length = length + 2;
-
-			printtimes = length;
-
-			times--;
-
-		}
-
-	}
-
-	// 여기까지 코드를 작성하세요----------------------   
-
-	moveCursor(10, 20);
-
-	return 0;
-
+    return 0;
 }

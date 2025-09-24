@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2025.09.24", "2025.09.24\20
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HW03 정답", "HW03 정답\HW03 정답.vcxproj", "{2C428C66-A551-4722-82CA-D083E01F0B8D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HW02-2 Array", "HW02-2 Array\HW02-2 Array.vcxproj", "{2288FA43-C2A5-4771-B591-AC1F981239DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{2C428C66-A551-4722-82CA-D083E01F0B8D}.Release|x64.Build.0 = Release|x64
 		{2C428C66-A551-4722-82CA-D083E01F0B8D}.Release|x86.ActiveCfg = Release|Win32
 		{2C428C66-A551-4722-82CA-D083E01F0B8D}.Release|x86.Build.0 = Release|Win32
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Debug|x64.ActiveCfg = Debug|x64
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Debug|x64.Build.0 = Debug|x64
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Debug|x86.ActiveCfg = Debug|Win32
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Debug|x86.Build.0 = Debug|Win32
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Release|x64.ActiveCfg = Release|x64
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Release|x64.Build.0 = Release|x64
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Release|x86.ActiveCfg = Release|Win32
+		{2288FA43-C2A5-4771-B591-AC1F981239DF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
