@@ -46,7 +46,6 @@ int main()
 
 
 
-
     //------------순서대로 숫자 정렬------------------------
     printf("\t\trandom\tsort");
     for (i = 0; i < Key_z - Key_a + 1; i++)
