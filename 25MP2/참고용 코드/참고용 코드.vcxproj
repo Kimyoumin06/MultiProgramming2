@@ -131,6 +131,9 @@
     <ClCompile Include="array2 memo.c" />
     <ClCompile Include="memo.c" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="memory" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
