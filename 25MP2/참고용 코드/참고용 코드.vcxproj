@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="array2 memo.c" />
     <ClCompile Include="memo.c" />
+    <ClCompile Include="struckt.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="memory" />
