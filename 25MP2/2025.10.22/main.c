@@ -57,7 +57,7 @@ int main()
 			printf("%s : %s\n", fishes[idx].name, fishes[idx].talk);
 
 			Answer = _getch();
-			if (Answer == fishes[idx].answer)
+			if (Answer - '0' == fishes[idx].answer)
 			{
 				printf("%s\n", fishes[idx].talk_O);
 			}
