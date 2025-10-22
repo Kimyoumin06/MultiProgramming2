@@ -129,8 +129,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="array2 memo.c" />
+    <ClCompile Include="file.c" />
     <ClCompile Include="memo.c" />
-    <ClCompile Include="struckt.c" />
+    <ClCompile Include="struct.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="memory" />

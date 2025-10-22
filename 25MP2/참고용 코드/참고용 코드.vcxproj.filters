@@ -21,7 +21,10 @@
     <ClCompile Include="array2 memo.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="struckt.c">
+    <ClCompile Include="struct.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="file.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
