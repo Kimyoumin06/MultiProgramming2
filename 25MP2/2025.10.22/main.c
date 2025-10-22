@@ -29,6 +29,9 @@ int main()
 	int waiting = 5;
 	int Answer;
 
+	int O = 0;
+	int X = 0;
+
 	while (fishing)
 	{
 
@@ -59,10 +62,12 @@ int main()
 			if (Answer - '0' == fishes[idx].answer)
 			{
 				printf("%s\n", fishes[idx].talk_O);
+				O++;
 			}
 			else
 			{
 				printf("%s\n", fishes[idx].talk_X);
+				X++;
 			}
 		}
 
