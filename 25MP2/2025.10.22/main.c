@@ -26,7 +26,6 @@ int main()
 
 	int i = 0;
 	int fishing = 1;
-	int waiting = 5;
 	int Answer;
 
 	int O = 0;
@@ -44,6 +43,7 @@ int main()
 		{
 			system("cls");
 			printf("당신은 찌를 던졌다!\n");
+			int waiting = 5;
 			while (waiting)
 			{
 				Sleep(500);
@@ -69,6 +69,7 @@ int main()
 				printf("%s\n", fishes[idx].talk_X);
 				X++;
 			}
+			system("cls");
 		}
 
 		else if (yn == 'n' || yn == 'N')
