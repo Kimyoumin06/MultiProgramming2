@@ -31,7 +31,6 @@ int main()
 
 	while (fishing)
 	{
-		fishing--;
 
 		printf("찌를 던진다 (Y/N) >");
 		char yn;
@@ -48,7 +47,7 @@ int main()
 				printf(".");
 				waiting--;
 			}
-			printf("입질이 왔다!!");
+			printf("\n입질이 왔다!!");
 			
 			srand((unsigned int)time(NULL));
 			int idx = rand() % 5;
@@ -70,13 +69,12 @@ int main()
 		else if (yn == 'n' || yn == 'N')
 		{
 			printf("당신은 낚시를 관두었다..");
-			return 0;
+			fishing--;
 		}
 
 		else
 		{
 			printf("실수로 미끼를 놓쳤다.. 다시 시도하자..\n");
-			fishing = 1;
 		}
 
 	}
