@@ -78,11 +78,13 @@ int main(void)
         return 1;
     }
 
+	// fopen_s를 통해 students.csv 파일을 읽기 모드("r")로 엶.
+    // r모드는 읽을 수만 있고, 파일을 수정할 순 없음.
+	// 읽는데 성공하면 0(오류 없음)이 되고 if문이 실행되지 않음.
+	// fp에는 students.csv 파일의 주소가 저장됨. 이후 fp를 통해 파일에 접근 가능.
+
     char line[256];
 
-    // [수정된 부분]
-    // CSV 파일의 첫 번째 줄(헤더)을 읽어서 버립니다.
-    // 이렇게 하면 while 루프는 실제 학생 데이터(두 번째 줄)부터 읽기 시작합니다.
     if (fgets(line, sizeof(line), fp) == NULL) {
         printf("students.csv 파일이 비어있거나 헤더를 읽을 수 없습니다.\n");
         fclose(fp);
