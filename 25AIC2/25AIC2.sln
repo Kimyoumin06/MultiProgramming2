@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "maxatk", "maxatk\maxatk.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mideaxm", "mideaxm\mideaxm.vcxproj", "{A6033070-76A6-4CE3-A786-6F247F369EC9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "모의시험 주석 필기", "파일 처리 및 보안 함수\파일 처리 및 보안 함수.vcxproj", "{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,14 @@ Global
 		{A6033070-76A6-4CE3-A786-6F247F369EC9}.Release|x64.Build.0 = Release|x64
 		{A6033070-76A6-4CE3-A786-6F247F369EC9}.Release|x86.ActiveCfg = Release|Win32
 		{A6033070-76A6-4CE3-A786-6F247F369EC9}.Release|x86.Build.0 = Release|Win32
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Debug|x64.ActiveCfg = Debug|x64
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Debug|x64.Build.0 = Debug|x64
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Debug|x86.ActiveCfg = Debug|Win32
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Debug|x86.Build.0 = Debug|Win32
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Release|x64.ActiveCfg = Release|x64
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Release|x64.Build.0 = Release|x64
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Release|x86.ActiveCfg = Release|Win32
+		{02408C06-F762-4DA5-A1AB-8EDBD10F30A3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
