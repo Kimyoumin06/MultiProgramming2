@@ -235,49 +235,65 @@ int main(void)
             maxIndex = i;
         }
     }
-    fprintf(fp, "가장 공격력이 높은 사람: %s (ATK=%d)\n", list[maxIndex].name, list[maxIndex].attack);
+    // 해당 for문은 학생 최대 수까지 반복되는 코드임.
+    // 이미 저장 되어있던 가장 강한 공격력보다 높은 공격력을 가진 학생이 나오면
+	// 해당 학생을 maxIndex에 저장하고 아니면 무시하기 때문에 구분할 수 있음.
+    
+    // 코드를 반복 실행하면서 계속해서 비교하고 최종적으로 공격력이 가장 높은 캐릭터를 구분함.
 
-    // (3) 3번째 사람 (인덱스 2)
-    // 헤더를 건너뛰었으므로 list[2]가 3번째 학생입니다.
+    fprintf(fp, "가장 공격력이 높은 사람: %s (ATK=%d)\n", list[maxIndex].name, list[maxIndex].attack);
+    // for문을 통해 구한 가장 강한 캐릭터의 이름과 공격력을 파일에 출력함.
+
     if (count >= 3) {
         fprintf(fp, "3번째: %s HP=%d\n", list[2].name, list[2].hp);
     }
+    // 3번 째 사람의 이름과 체력을 파일에 출력하는 코드.
+	// 헤더 부분이 있기 때문에 3번째 사람은 인덱스 2가 됨.
+	// 헤더, [0] 1번째, [1] 2번째, [2] 3번째.
 
-    // (4) 8번째 사람 (인덱스 7)
-    // 헤더를 건너뛰었으므로 list[7]이 8번째 학생입니다.
     if (count >= 8) {
         fprintf(fp, "8번째: %s HP=%d\n", list[7].name, list[7].hp);
     }
+	// 8번 째 사람의 이름과 체력을 파일에 출력함.
+    // [7]이 8번 째 사람인 이유는 위와 마찬가지.
 
-    // (5) 3번째 vs 8번째 전투 (전투 규칙 완벽 반영)
     if (count >= 8) {
         int hp3 = list[2].hp;
         int hp8 = list[7].hp;
+		// 각각 3번째와 8번째 캐릭터의 체력을 hp3, hp8에 저장함.
 
-        // 피해 계산식: 받는 피해 = max(0, 상대방 공격력 - 자신의 방어력)
         int damage3to8 = list[2].attack - list[7].defense;
         int damage8to3 = list[7].attack - list[2].defense;
+		// damage3to8 = 8번째 캐릭터가 받는 데미지.
+		// damage8to3 = 3번째 캐릭터가 받는 데미지.
+        // 위 식에 맞춰 각각 값을 저장함.
+
+		// 100 - 32 = damage3to8 == 68
+		// 32 - 20 = damage8to3 == 12
 
         if (damage3to8 < 0) damage3to8 = 0;
         if (damage8to3 < 0) damage8to3 = 0;
+        // 받은 피해가 0보다 작을 경우 해당 값을 0으로 처리함.
 
-        // 양쪽 피해가 0이면 즉시 무승부 처리
         if (damage3to8 == 0 && damage8to3 == 0) {
             fprintf(fp, "3번째 vs 8번째: 무승부\n");
         }
+		// 둘 다 받은 피해가 0일 경우 무승부 처리.
+
         else {
-            // [수정된 로직]
-            // HP가 둘 다 0보다 클 동안 전투를 반복합니다.
             while (hp3 > 0 && hp8 > 0) {
-                // 두 사람은 동시에 서로 피해를 입는다.
+				// 3번째 캐릭터와 8번째 캐릭터 둘 중 체력이 0 이하가 될 때까지 반복하는 while문.
                 hp3 -= damage8to3;
                 hp8 -= damage3to8;
+				// hp3 -= damage8to3; == hp3 = hp3 - damage8to3;
+                // 120 - 12 반복
+                
+				// hp8 -= damage3to8; == hp8 = hp8 - damage3to8;
+				// 105 - 68 반복
             }
 
-            // 루프가 종료된 후(즉, 누군가 HP가 0 이하가 된 후) 승패 판정
-            // (같은 턴에 둘 다 0 이하면 무승부)
             if (hp3 <= 0 && hp8 <= 0) {
-                fprintf(fp, "3번째 vs 8번째: 무승부\n"); // 둘 다 사망
+                fprintf(fp, "3번째 vs 8번째: 무승부\n");
             }
             else if (hp3 <= 0) {
                 fprintf(fp, "3번째 vs 8번째 승자: %s\n", list[7].name); // 3번째 사망 (8번째 승리)
@@ -285,11 +301,9 @@ int main(void)
             else if (hp8 <= 0) {
                 fprintf(fp, "3번째 vs 8번째 승자: %s\n", list[2].name); // 8번째 사망 (3번째 승리)
             }
-            // 한 턴에 승부가 나지 않아도 무승부 처리하던 기존 'else' 블록을 제거했습니다.
         }
     }
 
-    // (6) 마지막 줄
     fprintf(fp, "교수님 시험문제 너무 쉽습니다. 담주에 더 어렵게 내주세요\n");
 
     fclose(fp);
