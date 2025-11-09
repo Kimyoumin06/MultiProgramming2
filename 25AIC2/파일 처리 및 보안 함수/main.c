@@ -269,7 +269,7 @@ int main(void)
         // 위 식에 맞춰 각각 값을 저장함.
 
 		// 100 - 32 = damage3to8 == 68
-		// 32 - 20 = damage8to3 == 12
+		// 26 - 20 = damage8to3 == 6
 
         if (damage3to8 < 0) damage3to8 = 0;
         if (damage8to3 < 0) damage8to3 = 0;
@@ -286,7 +286,7 @@ int main(void)
                 hp3 -= damage8to3;
                 hp8 -= damage3to8;
 				// hp3 -= damage8to3; == hp3 = hp3 - damage8to3;
-                // 120 - 12 반복
+                // 120 - 6 반복
                 
 				// hp8 -= damage3to8; == hp8 = hp8 - damage3to8;
 				// 105 - 68 반복
