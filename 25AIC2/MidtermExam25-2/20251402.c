@@ -151,9 +151,9 @@ int main()
     fprintf(fp, "\n\n\n%s%s%s\n", list[8], list[9], list[10]);
 
     int AverageAtk = (list[0].attack + list[1].attack + list[2].attack + list[3].attack + list[4].attack +
-        list[5].attack + list[6].attack + list[7].attack + list[8].attack + list[9].attack) / 10;
+        list[5].attack + list[6].attack + list[7].attack + list[8].attack + list[9].attack + list[10].attack) / 10;
     int AverageDef = (list[0].defense + list[1].defense + list[2].defense + list[3].defense + list[4].defense +
-        list[5].defense + list[6].defense + list[7].defense + list[8].defense + list[9].defense) / 10;;
+        list[5].defense + list[6].defense + list[7].defense + list[8].defense + list[9].defense + list[10].defense) / 11;;
 
     fprintf(fp, "Average atk: %d\nAverage def: %d\n", AverageAtk, AverageDef);
 
