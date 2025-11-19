@@ -14,4 +14,41 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="action.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="kimyoumin_1101.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="lijongsuk_1102.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="hongjua_1103.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="kimyumi_1104.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="action.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="kimyoumin_1101.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="lijongsuk_1102.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="hongjua_1103.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="kimyumi_1104.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
