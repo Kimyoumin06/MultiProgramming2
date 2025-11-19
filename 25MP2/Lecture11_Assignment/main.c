@@ -31,13 +31,13 @@ int main()
 
     }
     //함수 각각 플레이어에 연결하는 부분
-    p[0].name = "ES1";
+    p[0].name = "김유민";
     p[0].act = ES1action;
-    p[1].name = "ES2";
+    p[1].name = "이종석";
     p[1].act = Heal;
-    p[2].name = "ES3";
+    p[2].name = "홍주아";
     p[2].act = Heal;
-    p[3].name = "ES4";
+    p[3].name = "김유미";
     p[3].act = Heal;
 
 
