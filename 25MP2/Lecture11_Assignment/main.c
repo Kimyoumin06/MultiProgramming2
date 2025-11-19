@@ -60,7 +60,7 @@ int main()
             }
 
         }
-        Sleep(1000);
+        Sleep(500);
 
         int count = 0;
 
